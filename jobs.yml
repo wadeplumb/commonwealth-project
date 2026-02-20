@@ -1,0 +1,24 @@
+name: Generate Markdown List
+
+on:
+  push:
+    paths:
+      - "pages.md/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate file list
+        run: |
+          ls pages.md/*.md | sed 's/pages.md\///' | jq -R . | jq -s . > pages.md/files.json
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add pages.md/files.json
+          git commit -m "Update file list" || echo "No changes"
+          git push

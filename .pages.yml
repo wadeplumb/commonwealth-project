@@ -1,7 +1,7 @@
 content:
   - name: pages
     label: pages
-    path: src/pages.md
+    path: pages.md
     type: collection
     fields:
       # ... fields defined here ...

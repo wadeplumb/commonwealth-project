@@ -27,7 +27,7 @@ jobs:
           mkdir -p html
           for file in pagesmd/*.md; do
             base=$(basename "$file" .md)
-            pandoc "$file" -s --css ./styles.css -o "html/$base.html"
+            pandoc "$file" -s --css ../styles.css -o "html/$base.html"
           done
 
       - name: Commit HTML back to repo

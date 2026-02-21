@@ -6,4 +6,5 @@ content:
     path: pagesmd
     type: collection
     fields:
+      - {name: title, label: Title, type: string}
       # ... fields defined here ...

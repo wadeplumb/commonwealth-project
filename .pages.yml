@@ -6,5 +6,9 @@ content:
     path: pagesmd
     type: collection
     fields:
+      - {name: title, label: Title, type: string}
+      - {name: description, label: Description, type: string, options: { maxlength: 160}}
+      - { name: image, label: Image, type: image }
+      - { name: body, label: Body, type: rich-text}
 
       # ... fields defined here ..

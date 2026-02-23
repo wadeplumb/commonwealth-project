@@ -5,18 +5,6 @@ content:
     label: pages
     path: pagesmd
     type: collection
-    template: |
-      ---
-      nav-links: {{ nav-links }}
-      title: {{ title }}
-      description: {{ description }}
-      ---
-
-      <div class="wrapper">
-      {{ description }}
-
-      {{ body }}
-      </div>
     fields:
       - { name: nav-links, label: links, type: string }
       - { name: title, label: Title, type: string }
@@ -27,3 +15,5 @@ content:
           options: { maxlength: 160 },
         }
       - { name: body, label: Body, type: rich-text }
+
+      # ... fields defined here ..

@@ -6,8 +6,7 @@ content:
     path: pagesmd
     type: collection
     fields:
-      - { name: title, label: links, type: rich-text }
-      - { name: title, label: Title, type: string }
+      - { name: title, label: header, type: rich-text }
       - {
           name: description,
           label: Description,

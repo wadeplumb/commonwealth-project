@@ -33,6 +33,12 @@ jobs:
             fi
           done
 
+      - name: Wrap body content in container
+        run: |
+          for file in html/*.html; do
+          sed -i 's/</header>/</header>\n  <div class="container">/; s/<\/body>/  <\/div>\n<\/body>/' "$file"
+          done
+
       - name: Commit HTML back to repo
         run: |
           git config user.name "github-actions"

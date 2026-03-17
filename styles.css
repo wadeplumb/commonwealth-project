@@ -7,21 +7,27 @@ body {
 }
 
 header {
-  width: 100vw;
-  height: 150px;
+  /**
+   * Sets the element's width to 100% of the viewport width.
+   * Note: Using 100vw may cause horizontal overflow if the page has a scrollbar,
+   * as it doesn't account for the scrollbar width. Consider using 100% or max-width
+   * as alternatives for more predictable layouts.
+   */
+  height: 600px;
   background-color: #21d6c7;
+  background-image: url(images/henerysplace.png);
+  background-size: cover;
+  background-position: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  h1 {
-    color: rgb(0, 0, 0);
-    text-align: center;
-    margin: 0;
-    width: 100vw !important;
-    font-size: 50px;
-  }
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
 }
-*:not(body):not(header):not(html):not(:root) {
+*:not(body):not(header):not(html):not(:root):not(.nav-bar):not(.nav-link):not(
+    title
+  ):not(.title-block-header):not(h1) {
   color: #333;
   margin: 20px;
   align-self: center;

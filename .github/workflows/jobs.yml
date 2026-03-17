@@ -40,7 +40,7 @@ jobs:
         run: |
           for file in html/*.html; do
             sed -i 's|</header>|</header>\n  <div class="container">|; s|</body>|  </div>\n</body>|' "$file"
-            sed -i 's|<header>|<header>\n  <div class="nav-bar-container">|; s|</header>|  </div>\n</header>|' "$file"
+            sed -i 's|<header id="title-block-header">|<header id="title-block-header">\n  <div class="nav-bar-container">|; s|</header>|  </div>\n</header>|' "$file"
           done
 
       - name: Commit HTML back to repo

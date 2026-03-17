@@ -24,6 +24,10 @@ header {
   justify-content: space-between;
   align-items: flex-start;
   padding: 20px;
+  .nav-bar {
+    gap: 20px;
+    display: flex;
+  }
 }
 .container {
   color: #333;

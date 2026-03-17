@@ -36,10 +36,11 @@ jobs:
 
           done
 
-      - name: add containrer
+      - name: add containers to html files
         run: |
           for file in html/*.html; do
             sed -i 's|</header>|</header>\n  <div class="container">|; s|</body>|  </div>\n</body>|' "$file"
+            sed -i 's|<header>|<header>\n  <div class="nav-bar-container">|; s|</header>|  </div>\n</header>|' "$file"
           done
 
       - name: Commit HTML back to repo

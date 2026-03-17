@@ -25,9 +25,7 @@ header {
   align-items: flex-start;
   padding: 20px;
 }
-*:not(body):not(header):not(html):not(:root):not(.nav-bar):not(.nav-link):not(
-    title
-  ):not(.title-block-header):not(h1) {
+.container {
   color: #333;
   margin: 20px;
   align-self: center;

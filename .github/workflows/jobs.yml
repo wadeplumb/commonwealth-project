@@ -28,6 +28,9 @@ jobs:
           for file in pagesmd/*.md; do
             base=$(basename "$file" .md)
             pandoc "$file" -s --css ../styles.css -o "html/$base.html"
+            if ! grep -q 'src="../navbar.js"' "html/$base.html"; then
+              sed -i '/<\/head>/i\  <script src="..\/navbar.js" defer><\/script>' "html/$base.html"
+            fi
 
 
 
@@ -38,7 +41,6 @@ jobs:
           for file in html/*.html; do
             sed -i 's|</header>|</header>\n  <div class="container">|; s|</body>|  </div>\n</body>|' "$file"
             sed -i 's|<header id="title-block-header">|<header id="title-block-header">\n  <div class="nav-bar-container">|; s|</header>|  </div>\n</header>|' "$file"
-            sed -i '/<\/head>/i\  <script src="..\/navbar.js" defer><\/script>' "html/$base.html"
           done
 
       - name: Commit HTML back to repo

@@ -70,7 +70,7 @@
   }
 
   async function buildNavbar() {
-    var header = document.querySelector("header");
+    var header = document.querySelector(".nav-bar-container");
     if (!header) return;
 
     var pageFiles = await findPageFiles();
@@ -79,7 +79,7 @@
     var nav = document.createElement("nav");
     nav.setAttribute("aria-label", "Page navigation");
     nav.setAttribute("class", "nav-bar");
-    nav.style.display = "flex";
+    // nav.style.display = "flex";
     // nav.style.flexWrap = "wrap";
     // nav.style.gap = "12px";
     // nav.style.justifyContent = "center";
@@ -91,12 +91,13 @@
       link.href = "./" + fileName;
       link.textContent = toLabel(fileName);
       link.style.padding = "8px 12px";
-      link.style.border = "1px solid #111";
+      // link.style.border = "1px solid #111";
       link.style.borderRadius = "999px";
-      link.style.backgroundColor = currentFile === fileName ? "#111" : "#fff";
-      link.style.color = currentFile === fileName ? "#fff" : "#111";
+      link.style.color = currentFile === fileName ? "#111" : "#fff";
+      // link.style.color = currentFile === fileName ? "#fff" : "#111";
       link.style.textDecoration = "none";
       link.style.fontWeight = "600";
+      link.style.fontSize = "20px";
       link.style.width = "fit-content";
       nav.appendChild(link);
     });

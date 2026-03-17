@@ -37,7 +37,7 @@
     var name = window.location.pathname.split("/").pop();
     return name || "index.html";
   }
-
+  //:)
   async function findPageFiles() {
     var currentFile = getCurrentFileName();
     var discovered = [];

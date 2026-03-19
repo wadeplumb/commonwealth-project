@@ -22,22 +22,28 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Convert Markdown to HTML (use description as filename)
+      - name: Convert Markdown to HTML (safe filename handling)
         run: |
           mkdir -p html
+          > generated.txt
+
           for file in pagesmd/*.md; do
-            # Extract description from front matter
+            # Extract description
             desc=$(grep -m 1 '^description:' "$file" | cut -d':' -f2- | xargs)
 
-            # Fallback to original filename if no description
+            # Fallback if missing
             if [ -z "$desc" ]; then
               base=$(basename "$file" .md)
             else
-              # Clean description (spaces → dashes, lowercase, remove bad chars)
               base=$(echo "$desc" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/-\+/-/g' | sed 's/^-//;s/-$//')
             fi
 
-            pandoc "$file" -s --css ../styles.css -o "html/$base.html"
+            output="html/$base.html"
+
+            echo "Generating $output"
+            pandoc "$file" -s --css ../styles.css -o "$output"
+
+            echo "$output" >> generated.txt
           done
 
       - name: add containers to html files
@@ -48,10 +54,14 @@ jobs:
             sed -i '/<\/head>/i \  <script src="../navbar.js" defer></script>' "$file"
           done
 
-      - name: Clean and rebuild HTML folder
+      - name: Remove orphaned HTML files (safe)
         run: |
-          rm -rf html
-          mkdir html
+          for file in html/*.html; do
+            if ! grep -qx "$file" generated.txt; then
+              echo "Removing old file: $file"
+              rm "$file"
+            fi
+          done
 
       - name: Commit HTML back to repo
         run: |

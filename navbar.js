@@ -120,7 +120,7 @@
   }
   var currentFile = getCurrentFileName();
   console.log(currentFile);
-  if (currentFile === "2026-02-20-untitled.html") {
+  if (currentFile === "home.html") {
     var titleBlockHeader = document.getElementById("title-block-header");
     if (titleBlockHeader) {
       titleBlockHeader.style.backgroundImage =

@@ -2,8 +2,6 @@
 title: Scholar Core Classes
 description: " Core Classes"
 ---
-<h2 style="text-align: center"><u>Scholar Class Descriptions</u></h2>
-
 ## MORNING CORE CLASSES
 
 |     |     |

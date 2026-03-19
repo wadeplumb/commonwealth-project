@@ -14,4 +14,5 @@ Junior school classes are focused on love of learning, adapting curriculum conte
 
 |     |     |
 | --- | --- |
-| ![](/images/download.png) | ![](/images/IMG_6124.jpg) |
+| ![](/images/1000004236.jpg) | ![](/images/IMG_6124.jpg) |
+| ![](/images/1000003938.jpg) |     |

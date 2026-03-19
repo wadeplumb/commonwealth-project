@@ -4,6 +4,7 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  font-size: 24px;
 }
 
 header {
@@ -51,7 +52,33 @@ header {
 }
 .container {
   color: #333;
-  margin: 20px;
+  display: flex;
+  justify-content: center;
   align-self: center;
+  flex-direction: column;
+  align-items: center;
   width: 70vw;
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    th,
+    td {
+      /* border: 1px solid #ddd; */
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    td {
+      width: 40vw;
+    }
+  }
+  img {
+    max-width: 40vw;
+    height: auto;
+    border-radius: 8px;
+  }
 }

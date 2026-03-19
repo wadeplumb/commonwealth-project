@@ -14,7 +14,7 @@ description: " Core Classes"
 |     |     |
 | --- | --- |
 | **Our Story: Founding and Framing Freedom**         Mentors: Jenni Rock, Ashley Oborn  <br>  <br>In this class we study the American Revolution, its leadership, and America's founding.  Get ready for a fantastic class with a flexible reading list, simulations, and lots of inspiring activities focused on our nation's founding and leadership. We will be discussing our readings in class, writing papers, memorizing and giving presentations.  **Ages 13-14** | ![](/images/unnamed.png) |
-| ![](/images/IMG_3508.jpg) | **Rendezvous with Greatness**                 Mentors: Shannon Seright, Rachelle Howard, Deidre Henkel  <br>  <br>Rendezvous with Greatness, meant to be taken after Our Story, delves into the history of the Civil War and World Wars I & II.  We’ll be reading, discussing, writing papers, and presenting in this class. By completing the first semester requirements you will earn a replica WWII sword!!          **Age 14-15** |
+|     | **Rendezvous with Greatness**                 Mentors: Shannon Seright, Rachelle Howard, Deidre Henkel  <br>  <br>Rendezvous with Greatness, meant to be taken after Our Story, delves into the history of the Civil War and World Wars I & II.  We’ll be reading, discussing, writing papers, and presenting in this class. By completing the first semester requirements you will earn a replica WWII sword!!          **Age 14-15** |
 
 |     |     |
 | --- | --- |

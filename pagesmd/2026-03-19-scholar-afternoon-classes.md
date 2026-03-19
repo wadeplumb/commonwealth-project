@@ -1,6 +1,6 @@
 ---
 title: Scholar Afternoon Classes
-description: Afternoon Classes
+description: Scholar Electives
 ---
 AFTERNOON SCHOLAR CLASSES
 

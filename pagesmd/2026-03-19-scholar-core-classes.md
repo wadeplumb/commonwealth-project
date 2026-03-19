@@ -1,6 +1,6 @@
 ---
 title: Scholar Core Classes
-description: " Core Classes"
+description: " Scholar  Classes"
 ---
 ## MORNING CORE CLASSES
 

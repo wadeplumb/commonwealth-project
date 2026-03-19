@@ -2,7 +2,7 @@
 title: Junior Classes
 description: Junior Classes
 ---
-<h2 style="text-align: center"><strong><u>Junior Classes</u></strong></h2>
+<h2 style="text-align: center"><strong>Junior Classes</strong></h2>
 
 > > > > **Nursery** for ages 0-3                        **Liberty Girls** for girls 8-11
 > 

@@ -101,9 +101,9 @@
       link.style.padding = "8px 12px";
       link.style.borderRadius = "999px";
       // Highlight current page with dark text, others with white
-      link.style.color = currentFile === fileName ? "#111" : "#fff";
+      link.style.color = currentFile === fileName ? "#959595" : "#ffffff";
       link.style.textDecoration = "none";
-      link.style.fontWeight = "600";
+      link.style.fontWeight = "300";
       link.style.fontSize = "20px";
       link.style.width = "fit-content";
       nav.appendChild(link);
@@ -118,6 +118,7 @@
   } else {
     buildNavbar();
   }
+  // add background image to home page header
   var currentFile = getCurrentFileName();
   console.log(currentFile);
   if (currentFile === "home.html") {
@@ -130,4 +131,101 @@
       titleBlockHeader.style.height = "600px";
     }
   }
+  function addModernFooter() {
+    // Prevent duplicates
+    if (document.getElementById("custom-footer")) return;
+
+    const footer = document.createElement("footer");
+    footer.id = "custom-footer";
+
+    // Get page files for footer links
+    findPageFiles().then(function (pageFiles) {
+      var linksHtml = pageFiles
+        .map(function (fileName) {
+          return '<a href="./' + fileName + '">' + toLabel(fileName) + "</a>";
+        })
+        .join("");
+
+      footer.innerHTML = `
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Beacon Academy</h3>
+          <p>Beacon Academy seeks to be a long-lasting community dedicated to nurturing the genius, passions, and potential in each child and parent through excellence in education, leadership, and individualized mentoring.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Links</h4>
+          ${linksHtml}
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <a href="#">Email</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © ${new Date().getFullYear()} Becon Academy Commonwealth. All rights reserved.
+      </div>
+    `;
+
+      document.body.appendChild(footer);
+    });
+
+    // Styles
+    const style = document.createElement("style");
+    style.textContent = `
+    #custom-footer {
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .footer-section p {
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
+    .footer-section a {
+      display: block;
+      color: #9ca3af;
+      text-decoration: none;
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .footer-section a:hover {
+      color: #38bdf8;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #6b7280;
+      border-top: 1px solid #1f2937;
+      padding-top: 15px;
+    }
+  `;
+
+    document.head.appendChild(style);
+  }
+
+  // Run it
+  addModernFooter();
 })();

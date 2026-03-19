@@ -1,10 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Playwrite NG Modern", cursive;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
+  color: #ffffff;
   font-size: 24px;
+}
+tbody {
+  font-family: "Roboto", sans-serif;
+}
+p {
+  font-family: "Roboto", sans-serif;
 }
 
 header {
@@ -28,26 +37,39 @@ header {
     gap: 20px;
   } */
   .nav-bar-container {
-    background-color: #3dd0dd;
+    background-color: #0f172a;
     display: flex;
+    font-weight: 100;
+    font-size: smaller;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 
     .nav-bar {
+      font-size: xx-small;
       display: flex;
       gap: 20px;
+      a:hover {
+        transition: 0.5s ease-in-out;
+        transform: scale(1.05);
+        opacity: 0.7;
+      }
     }
   }
 }
 @keyframes pulse {
-  0%,
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 80% 100%, 20% 100%, 0 85%);
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
   50% {
-    clip-path: polygon(0 0, 100% 0, 100% 15%, 80% 0, 20% 0, 0 15%);
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 .container {
@@ -78,6 +100,7 @@ header {
   }
   img {
     max-width: 35vw;
+    min-width: 34vw;
     height: auto;
     border-radius: 8px;
   }

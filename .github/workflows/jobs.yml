@@ -22,15 +22,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Convert Markdown to HTML
+      - name: Convert Markdown to HTML (use description as filename)
         run: |
           mkdir -p html
           for file in pagesmd/*.md; do
-            base=$(basename "$file" .md)
+            # Extract description from front matter
+            desc=$(grep -m 1 '^description:' "$file" | cut -d':' -f2- | xargs)
+
+            # Fallback to original filename if no description
+            if [ -z "$desc" ]; then
+              base=$(basename "$file" .md)
+            else
+              # Clean description (spaces → dashes, lowercase, remove bad chars)
+              base=$(echo "$desc" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/-\+/-/g' | sed 's/^-//;s/-$//')
+            fi
+
             pandoc "$file" -s --css ../styles.css -o "html/$base.html"
-
-
-
           done
 
       - name: add containers to html files
@@ -41,15 +48,10 @@ jobs:
             sed -i '/<\/head>/i \  <script src="../navbar.js" defer></script>' "$file"
           done
 
-      - name: Remove HTML files without matching Markdown
+      - name: Clean and rebuild HTML folder
         run: |
-          for htmlfile in html/*.html; do
-            base=$(basename "$htmlfile" .html)
-            if [ ! -f "pagesmd/$base.md" ]; then
-              echo "Removing orphaned HTML: $htmlfile"
-              rm "$htmlfile"
-            fi
-          done
+          rm -rf html
+          mkdir html
 
       - name: Commit HTML back to repo
         run: |

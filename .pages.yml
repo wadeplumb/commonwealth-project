@@ -9,7 +9,7 @@ content:
       - { name: title, label: header, type: text }
       - {
           name: description,
-          label: Description,
+          label: navigation button,
           type: string,
           options: { maxlength: 160 },
         }

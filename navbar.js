@@ -1,4 +1,6 @@
 ﻿(function () {
+  // Converts a filename to a readable label
+  // Removes .html extension and date prefix, then capitalizes words
   function toLabel(fileName) {
     var base = fileName
       .replace(/\.html$/i, "")
@@ -13,6 +15,8 @@
       .join(" ");
   }
 
+  // Extracts and validates HTML filenames from href attributes
+  // Strips query strings and hash fragments, returns null for non-HTML files
   function normalizeHtmlFile(href) {
     if (!href) return null;
     var cleanHref = href.split("#")[0].split("?")[0];
@@ -21,27 +25,32 @@
     return fileName || null;
   }
 
+  // Returns a sorted array of unique values
   function uniqueSorted(values) {
     return Array.from(new Set(values)).sort(function (a, b) {
       return a.localeCompare(b);
     });
   }
 
+  // Gets the current directory path from the window location
   function getCurrentDirPath() {
     var path = window.location.pathname;
     var slash = path.lastIndexOf("/");
     return slash >= 0 ? path.slice(0, slash + 1) : "/";
   }
 
+  // Gets the current filename from the window location
   function getCurrentFileName() {
     var name = window.location.pathname.split("/").pop();
     return name || "index.html";
   }
-  //:)
+
+  // Discovers available page files by fetching directory listing or parsing page links
   async function findPageFiles() {
     var currentFile = getCurrentFileName();
     var discovered = [];
 
+    // Try to fetch directory listing
     try {
       var res = await fetch(getCurrentDirPath(), { cache: "no-store" });
       if (res.ok) {
@@ -54,9 +63,10 @@
           .filter(Boolean);
       }
     } catch (err) {
-      // Some hosts (or file://) do not allow directory listing.
+      // Fallback: some hosts or file:// protocol don't allow directory listing
     }
 
+    // Fallback: extract links from current page if directory listing failed
     if (!discovered.length) {
       discovered = Array.from(document.querySelectorAll("a[href]"))
         .map(function (a) {
@@ -65,10 +75,12 @@
         .filter(Boolean);
     }
 
+    // Ensure current file is always included
     discovered.push(currentFile);
     return uniqueSorted(discovered);
   }
 
+  // Builds and inserts the navbar into the DOM
   async function buildNavbar() {
     var header = document.querySelector(".nav-bar-container");
     if (!header) return;
@@ -76,25 +88,20 @@
     var pageFiles = await findPageFiles();
     var currentFile = getCurrentFileName();
 
+    // Create nav element with accessibility attributes
     var nav = document.createElement("nav");
     nav.setAttribute("aria-label", "Page navigation");
     nav.setAttribute("class", "nav-bar");
-    // nav.style.display = "flex";
-    // nav.style.flexWrap = "wrap";
-    // nav.style.gap = "12px";
-    // nav.style.justifyContent = "center";
-    // nav.style.marginTop = "16px";
-    // nav.style.width = "100vw";
 
+    // Create a link for each discovered page file
     pageFiles.forEach(function (fileName) {
       var link = document.createElement("a");
       link.href = "./" + fileName;
       link.textContent = toLabel(fileName);
       link.style.padding = "8px 12px";
-      // link.style.border = "1px solid #111";
       link.style.borderRadius = "999px";
+      // Highlight current page with dark text, others with white
       link.style.color = currentFile === fileName ? "#111" : "#fff";
-      // link.style.color = currentFile === fileName ? "#fff" : "#111";
       link.style.textDecoration = "none";
       link.style.fontWeight = "600";
       link.style.fontSize = "20px";
@@ -105,9 +112,22 @@
     header.appendChild(nav);
   }
 
+  // Initialize navbar when DOM is ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", buildNavbar);
   } else {
     buildNavbar();
+  }
+  var currentFile = getCurrentFileName();
+  console.log(currentFile);
+  if (currentFile === "2026-02-20-untitled.html") {
+    var titleBlockHeader = document.getElementById("title-block-header");
+    if (titleBlockHeader) {
+      titleBlockHeader.style.backgroundImage =
+        'url("../images/henerysplace.png")';
+      titleBlockHeader.style.backgroundSize = "cover";
+      titleBlockHeader.style.backgroundPosition = "center";
+      titleBlockHeader.style.height = "600px";
+    }
   }
 })();

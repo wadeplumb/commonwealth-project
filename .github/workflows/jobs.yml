@@ -41,6 +41,16 @@ jobs:
             sed -i '/<\/head>/i \  <script src="../navbar.js" defer></script>' "$file"
           done
 
+      - name: Remove HTML files without matching Markdown
+        run: |
+          for htmlfile in html/*.html; do
+            base=$(basename "$htmlfile" .html)
+            if [ ! -f "pagesmd/$base.md" ]; then
+              echo "Removing orphaned HTML: $htmlfile"
+              rm "$htmlfile"
+            fi
+          done
+
       - name: Commit HTML back to repo
         run: |
           git config user.name "github-actions"

@@ -13,9 +13,8 @@ header {
    * as it doesn't account for the scrollbar width. Consider using 100% or max-width
    * as alternatives for more predictable layouts.
    */
-  height: 600px;
-  background-color: #21d6c7;
-  background-image: url(images/henerysplace.png);
+  height: 200px;
+  background-color: #ffffff;
   background-size: cover;
   background-position: center;
   /* display: flex;

@@ -73,11 +73,11 @@ header {
       background-color: #f2f2f2;
     }
     td {
-      width: 40vw;
+      max-width: 45vw;
     }
   }
   img {
-    max-width: 40vw;
+    max-width: 35vw;
     height: auto;
     border-radius: 8px;
   }

@@ -1,5 +1,5 @@
 ---
-title: Beacon Academy Commonwealth
+title: Junior Classes
 description: Junior Classes
 ---
 <h2 style="text-align: center"><strong>Junior Classes</strong></h2>

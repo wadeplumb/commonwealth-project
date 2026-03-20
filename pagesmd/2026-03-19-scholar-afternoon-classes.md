@@ -2,7 +2,7 @@
 title: Scholar Afternoon Classes
 description: Scholar Electives
 ---
-AFTERNOON SCHOLAR CLASSES
+<h2 style="text-align: center"><strong>scholar Elective Classes</strong></h2>
 
 |     |     |
 | --- | --- |

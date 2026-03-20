@@ -1,4 +1,19 @@
-﻿(function () {
+﻿// add same title to all pages
+var titleElement = document.getElementsByClassName("title")[0];
+if (titleElement) {
+  var link = document.createElement("a");
+  link.href = "./home.html";
+  link.textContent = "Beacon Academy of Southern Utah";
+  link.style.color = "#ffffff";
+  link.style.textDecoration = "none";
+  link.style.fontWeight = "400";
+  link.style.fontSize = "32px";
+  link.style.paddingTop = "10px";
+  link.style.paddingBottom = "10px";
+  titleElement.replaceWith(link);
+}
+
+(function () {
   // Converts a filename to a readable label
   // Removes .html extension and date prefix, then capitalizes words
   function toLabel(fileName) {
@@ -118,6 +133,7 @@
   } else {
     buildNavbar();
   }
+
   // add background image to home page header
   var currentFile = getCurrentFileName();
   console.log(currentFile);
@@ -149,7 +165,9 @@
       footer.innerHTML = `
       <div class="footer-container">
         <div class="footer-section">
-          <h3>Beacon Academy</h3>
+          <a href="./home.html">
+            <h3>Beacon Academy</h3>
+          </a>
           <p>Beacon Academy seeks to be a long-lasting community dedicated to nurturing the genius, passions, and potential in each child and parent through excellence in education, leadership, and individualized mentoring.</p>
         </div>
 
@@ -160,13 +178,13 @@
 
         <div class="footer-section">
           <h4>Contact</h4>
-          <a href="#">Email</a>
-          <a href="#">GitHub</a>
+          <a href="mailto:beaconacademysu@gmail.com">Email</a>
+
         </div>
       </div>
 
       <div class="footer-bottom">
-        © ${new Date().getFullYear()} Becon Academy Commonwealth. All rights reserved.
+        © ${new Date().getFullYear()} Beacon Academy of Southern Utah. All rights reserved.
       </div>
     `;
 

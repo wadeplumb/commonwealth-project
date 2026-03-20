@@ -53,6 +53,7 @@ jobs:
             sed -i 's|<header id="title-block-header">|<header id="title-block-header">\n  <div class="nav-bar-container">|; s|</header>|  </div>\n</header>|' "$file"
             sed -i '/<\/head>/i \  <script src="../navbar.js" defer></script>' "$file"
             sed -i '/<\/head>/i \  <link rel="icon" href="../images/Lighthouse favicon.png" type="image/png" />' "$file"
+            sed -i '/<\/head>/i \  <meta name="viewport" content="width=device-width, initial-scale=1">' "$file"
           done
 
       - name: Remove orphaned HTML files (safe)

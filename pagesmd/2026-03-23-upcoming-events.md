@@ -14,4 +14,4 @@ description: Upcoming Events
 - Culminating Activity for Compass - May 13
 - Closing Social - May 15
 
-<iframe src="[https://calendar.google.com/calendar/embed?src=beaconacademysu%40gmail.com&ctz=America%2FDenver](https://calendar.google.com/calendar/embed?src=beaconacademysu%40gmail.com&ctz=America%2FDenver)" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://calendar.google.com/calendar/embed?src=beaconacademysu%40gmail.com&ctz=America%2FDenver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>

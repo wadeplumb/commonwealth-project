@@ -47,9 +47,10 @@ header {
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 
     .nav-bar {
-      font-size: xx-small;
+      font-size: 10px;
       display: flex;
       gap: 20px;
+
       a:hover {
         transition: 0.5s ease-in-out;
         transform: scale(1.05);

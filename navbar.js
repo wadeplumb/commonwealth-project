@@ -119,7 +119,7 @@ if (titleElement) {
       link.style.color = currentFile === fileName ? "#959595" : "#ffffff";
       link.style.textDecoration = "none";
       link.style.fontWeight = "300";
-      link.style.fontSize = "20px";
+      link.style.fontSize = "15px";
       link.style.width = "fit-content";
       nav.appendChild(link);
     });

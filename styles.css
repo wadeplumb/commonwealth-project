@@ -74,6 +74,7 @@ header {
   }
 }
 .container {
+  position: relative;
   color: #333;
   display: flex;
   justify-content: center;
@@ -112,5 +113,18 @@ header {
     display: flex;
     align-items: center;
     flex-direction: row;
+    gap: 15px;
+  }
+  code {
+    position: absolute;
+    top: 0px;
+    left: -300px;
+    background-color: #df6c0ec0;
+    border-radius: 4px;
+    font-family: "Roboto", monospace;
+    border: solid 1px #df6c0e;
+    font-size: 14px;
+    width: 150%;
+    text-align: center;
   }
 }

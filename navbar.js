@@ -129,10 +129,104 @@ if (titleElement) {
 
   // Initialize navbar when DOM is ready
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", buildNavbar);
+    document.addEventListener("DOMContentLoaded", () => {
+      buildNavbar();
+      setupHamburgerMenu();
+    });
   } else {
     buildNavbar();
+    setupHamburgerMenu();
   }
+
+  function setupHamburgerMenu() {
+    //hamburger menu for mobile
+    var header = document.querySelector(".nav-bar-container");
+    if (!header) return;
+
+    if (document.getElementById("hamburger-button")) return;
+
+    var button = document.createElement("button");
+    button.id = "hamburger-button";
+    button.type = "button";
+    button.setAttribute("aria-label", "Toggle navigation menu");
+    button.textContent = "☰";
+    button.style.background = "transparent";
+    button.style.border = "none";
+    button.style.color = "#ffffff";
+    button.style.fontSize = "32px";
+    button.style.cursor = "pointer";
+    button.style.padding = "8px";
+    button.style.position = "relative";
+    button.style.zIndex = "1100";
+
+    header.insertBefore(button, header.firstChild);
+
+    button.addEventListener("click", function () {
+      var nav = header.querySelector(".nav-bar");
+      if (!nav) return;
+      nav.classList.toggle("open");
+    });
+
+    var style = document.createElement("style");
+    style.textContent = `
+      .nav-bar {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+      #hamburger-button {
+        display: none;
+      }
+      @media (max-width: 900px) {
+      header{
+      height: auto;
+      }
+        .nav-bar-container {
+        position: relative;
+        overflow: visible;
+        clip-path: none;
+        }
+        .nav-bar {
+          display: none;
+          flex-direction: column;
+          gap: 8px;
+          background: rgba(15, 23, 42, 0.95);
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          padding: 12px;
+          z-index: 1050;
+          border-radius: 0 0 10px 10px;
+        }
+        .nav-bar.open {
+          display: flex;
+        }
+        .nav-bar a {
+          width: 100%;
+          padding: 10px 12px;
+          box-sizing: border-box;
+        }
+        #hamburger-button {
+          display: block;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    window.addEventListener("resize", function () {
+      if (window.matchMedia("(min-width: 901px)").matches) {
+        var nav = header.querySelector(".nav-bar");
+        if (nav) nav.classList.remove("open");
+      }
+    });
+  }
+
+  // var originalBuildNavbar = buildNavbar;
+  // buildNavbar = async function () {
+  //   await originalBuildNavbar();
+  //   setupHamburgerMenu();
+  // };
 
   // add background image to home page header
   var currentFile = getCurrentFileName();

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
+  position: relative;
   font-family: "Playwrite NG Modern", cursive;
   margin: 0;
   padding: 0;
@@ -8,6 +9,7 @@ body {
   flex-direction: column;
   color: #ffffff;
   font-size: 18px;
+  overflow-x: hidden;
 }
 tbody {
   font-family: "Roboto", sans-serif;
@@ -27,37 +29,29 @@ header {
   background-color: #ffffff;
   background-size: cover;
   background-position: center;
-  /* display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+}
+
+.nav-bar-container {
+  background-color: #0f172a;
+  display: flex;
+  font-weight: 100;
+  font-size: smaller;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 20px; */
-  /* .nav-bar {
-    gap: 20px;
-  } */
-  .nav-bar-container {
-    background-color: #0f172a;
-    display: flex;
-    font-weight: 100;
-    font-size: smaller;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  padding: 20px;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
 
-    .nav-bar {
-      font-size: 10px;
-      display: flex;
-      gap: 20px;
+.nav-bar {
+  font-size: 10px;
+  display: flex;
+  gap: 20px;
+}
 
-      a:hover {
-        transition: 0.5s ease-in-out;
-        transform: scale(1.05);
-        opacity: 0.7;
-      }
-    }
-  }
+.nav-bar a:hover {
+  transition: 0.5s ease-in-out;
+  transform: scale(1.05);
+  opacity: 0.7;
 }
 @keyframes pulse {
   0% {
@@ -74,7 +68,6 @@ header {
   }
 }
 .container {
-  position: relative;
   color: #333;
   display: flex;
   justify-content: center;
@@ -91,7 +84,7 @@ header {
     td {
       /* border: 1px solid #ddd; */
       padding: 8px;
-      text-align: left;
+      text-align: center;
       vertical-align: top;
     }
     th {
@@ -107,24 +100,89 @@ header {
     height: auto;
     border-radius: 8px;
   }
-  &:has(iframe) {
-    margin: 0 auto;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 15px;
-  }
   code {
     position: absolute;
-    top: 0px;
-    left: -300px;
+    top: 600px;
+    right: 0vw;
     background-color: #df6c0ec0;
     border-radius: 4px;
     font-family: "Roboto", monospace;
     border: solid 1px #df6c0e;
     font-size: 14px;
-    width: 150%;
+    width: 100vw;
     text-align: center;
+  }
+}
+.container:has(iframe) {
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+}
+
+@media (max-width: 1000px) {
+  .nav-bar-container {
+    flex-direction: row-reverse;
+    .nav-bar {
+      font-size: 8px;
+      flex-direction: column;
+    }
+  }
+  header {
+    margin-bottom: 60px;
+  }
+  .container:has(iframe) {
+    flex-direction: column;
+  }
+  .container {
+    width: 90vw;
+    img {
+      max-width: 90vw;
+      min-width: 90vw;
+    }
+    tr:has(img) {
+      display: flex;
+      flex-direction: column;
+      width: 90vw;
+      td {
+        display: block;
+        max-width: 90vw !important;
+      }
+    }
+    .odd:has(img) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    table {
+      display: block;
+    }
+
+    /* tr {
+      display: block;
+      width: 90vw;
+    } */
+
+    iframe {
+      width: 100%;
+      height: 400px;
+    }
+    ul {
+      width: 80vw;
+      li {
+        padding-bottom: 20px;
+      }
+    }
+    blockquote {
+      display: flex;
+      flex-direction: column;
+      margin: 0%;
+      padding: 0%;
+      p {
+        width: 80vw;
+      }
+    }
   }
 }
